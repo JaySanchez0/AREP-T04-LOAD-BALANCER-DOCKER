@@ -1,0 +1,6 @@
+FROM openjdk:8
+WORKDIR /loadApp/bin
+ENV PORT 6000
+COPY /target/classes /loadApp/bin/classes
+COPY /target/dependency /loadApp/bin/dependency
+CMD ["java","-cp","./classes:./dependency/*","com.load.App"]
