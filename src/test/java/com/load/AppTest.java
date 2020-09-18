@@ -26,6 +26,7 @@ public class AppTest {
 
     @Test
     public void shouldBeRecibeHtml(){
+        System.out.println(Unirest.get("http://localhost:3032").asString().getBody().toString());
         HttpResponse resp = new HTTPPetition().get("http://127.0.0.1:3032");
         assertEquals(resp.getContentType(),"text/html");
     }
