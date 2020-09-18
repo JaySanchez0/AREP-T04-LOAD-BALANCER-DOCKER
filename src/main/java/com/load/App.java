@@ -82,6 +82,7 @@ public class App {
     }
 
     private int getPort() {
+        System.out.println("---- PORT --- "+this.port);
         if(this.port!=-1) return this.port;
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
