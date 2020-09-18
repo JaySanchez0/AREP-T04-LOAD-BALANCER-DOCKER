@@ -19,25 +19,25 @@ public class AppTest {
 
     @BeforeClass
     public static void setup(){
-        App app = new App(3033);
+        App app = new App(3032);
         app.operations();
     }
 
     @Test
     public void shouldBeRecibeHtml(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3033");
+        HttpResponse resp = new HTTPPetition().get("http://127.0.0.1:3032");
         assertEquals(resp.getContentType(),"text/html");
     }
 
     @Test
     public void shouldBeRecibeJsonObject(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3033/note");
+        HttpResponse resp = new HTTPPetition().get("http://127.0.0.1:3032/note");
         assertEquals(resp.getContentType(),"application/json");
     }
 
     @Test
     public void shouldBeRecibeAJavascriptFile(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3033/js/app.js");
+        HttpResponse resp = new HTTPPetition().get("http://127.0.0.1:3032/js/app.js");
         System.out.println(resp.getBody());
         assertEquals(resp.getContentType(),"application/javascript");
     }
