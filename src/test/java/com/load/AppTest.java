@@ -38,6 +38,7 @@ public class AppTest {
     @Test
     public void shouldBeRecibeAJavascriptFile(){
         HttpResponse resp = new HTTPPetition().get("http://localhost:3032/js/app.js");
+        System.out.println(resp.getBody());
         assertEquals(resp.getContentType(),"application/javascript");
     }
 
