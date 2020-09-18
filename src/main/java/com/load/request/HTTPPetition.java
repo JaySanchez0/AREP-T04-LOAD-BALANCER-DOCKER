@@ -53,6 +53,7 @@ public class HTTPPetition {
             if(method.equals("POST")) System.out.println(resp);
             HttpResponse response = new HttpResponse(resp,ur.getHeaderField("Content-Type"));
             in.close();
+            System.out.println("Creo request");
             return response;
         } catch (Exception e) {
             e.printStackTrace();
