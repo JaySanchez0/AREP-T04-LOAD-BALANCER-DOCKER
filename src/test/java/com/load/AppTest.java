@@ -2,6 +2,7 @@ package com.load;
 
 import com.load.request.HTTPPetition;
 import com.load.response.HttpResponse;
+import com.mashape.unirest.http.Unirest;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.AfterClass;
