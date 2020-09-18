@@ -29,6 +29,7 @@ public class App {
      */
     public void operations(){
         port(getPort());
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
         get("*",(request, response) ->{
             String url = getUrl(request);
             System.out.println("url: "+url);
