@@ -9,6 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import spark.Spark;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -28,39 +33,29 @@ public class AppTest {
      * Verifica que la respuesta devuelva correctamente los archivos html
      */
     @Test
-    public void shouldBeRecibeHtml(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3032");
-        assertEquals(resp.getContentType(),"text/html");
+        public void shouldBeRecibeHtml() throws Exception {
+        HttpURLConnection ur = (HttpURLConnection) new URL("http://localhost:3032").openConnection();
+        assertEquals(ur.getContentType(),"text/html");
     }
 
     /**
      * Verifica que la respuesta devuelva correctamente los objetos json
      */
     @Test
-    public void shouldBeRecibeJsonObject(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3032/note");
-        assertEquals(resp.getContentType(),"application/json");
+    public void shouldBeRecibeJsonObject() throws Exception{
+        HttpURLConnection ur = (HttpURLConnection) new URL("http://localhost:3032/note").openConnection();
+        assertEquals(ur.getContentType(),"application/json");
     }
 
     /**
      * Verifica que la respuesta devuelva correctamente los archivos javascript
      */
     @Test
-    public void shouldBeRecibeAJavascriptFile(){
-        HttpResponse resp = new HTTPPetition().get("http://localhost:3032/js/app.js");
-        assertEquals(resp.getContentType(),"application/javascript");
+    public void shouldBeRecibeAJavascriptFile() throws Exception{
+        HttpURLConnection ur = (HttpURLConnection) new URL("http://localhost:3032/js/app.js").openConnection();
+        //HttpResponse resp = new HTTPPetition().get("http://localhost:3032/js/app.js");
+        assertEquals(ur.getContentType(),"application/javascript");
     }
-
-    /**
-     * Verifica que ejecute correctamente una peticion post
-     */
-    @Test
-    public void shouldBeSendAnPostRequest(){
-        HttpResponse resp = new HTTPPetition().post("http://localhost:3032/note","{\"work\":\"w\",\"description\":\"make the homework\"}","application/json");
-        resp = new HTTPPetition().get("http://localhost:3032/note");
-        assertTrue(resp.getBody().contains("\"work\":\"w\"") && resp.getBody().contains("\"description\":\"make the homework\""));
-    }
-
     /**
      * Apaga el balanceador de carga
      */
