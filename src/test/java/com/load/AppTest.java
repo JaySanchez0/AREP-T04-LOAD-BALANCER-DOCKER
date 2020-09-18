@@ -3,6 +3,7 @@ package com.load;
 import com.load.request.HTTPPetition;
 import com.load.response.HttpResponse;
 import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.AfterClass;
@@ -25,7 +26,7 @@ public class AppTest {
     }
 
     @Test
-    public void shouldBeRecibeHtml(){
+    public void shouldBeRecibeHtml() throws UnirestException {
         System.out.println(Unirest.get("http://localhost:3032").asString().getBody().toString());
         HttpResponse resp = new HTTPPetition().get("http://127.0.0.1:3032");
         assertEquals(resp.getContentType(),"text/html");
