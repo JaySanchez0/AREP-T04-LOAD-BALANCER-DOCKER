@@ -13,8 +13,15 @@ public class App {
 
     private int cont;
 
+    private int port = -1;
+
     public App(){
         cont=90;
+    }
+
+    public App(int port){
+        this();
+        this.port=port;
     }
 
     /**
@@ -73,10 +80,12 @@ public class App {
         App app = new App();
         app.operations();
     }
-    private static int getPort() {
+
+    private int getPort() {
+        if(this.port!=-1) return this.port;
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
         }
-        return 3032;
+        return 80;
     }
 }

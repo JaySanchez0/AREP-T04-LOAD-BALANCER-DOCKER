@@ -26,7 +26,8 @@ public class AppTest {
      */
     @BeforeClass
     public static void setup(){
-        App.main(null);
+        App app = new App(3032);
+        app.operations();
     }
 
     /**
